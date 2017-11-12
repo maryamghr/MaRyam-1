@@ -1,0 +1,33 @@
+Package: MaRyam
+Type: Package
+Title: Genotyping Structural Variants from single-cell Strand-seq data.
+Version: 0.1
+Date: 2017-11-12
+Author: Maryam Ghareghani
+Maintainer: Maryam Ghareghani <maryam.ghareghani@gmail.com>
+Description: This package implements functions for genotyping of Structural variants using single-cell Strand-seq data.
+Depends:
+  R (>= 3.3.0),
+  ggplot2,
+  RColorBrewer,
+  grid,
+  gtable,
+  reshape2,
+  gridExtra,
+  GenomicRanges
+Imports:
+  IRanges,
+  Rsamtools,
+  data.table,
+  hexbin,
+  stringr,
+  GenomicAlignments,
+  MASS
+Suggests:
+  knitr,
+  testthat
+License: 
+LazyLoad: yes
+Packaged: 2017-11-12 13:00:00 CET+1; Porubsky
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
