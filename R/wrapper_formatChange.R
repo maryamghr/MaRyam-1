@@ -17,7 +17,7 @@ changeRCformat = function(RCfile, outputDir, bamNamesFile = "bamNames.txt")
 {
   counts = data.table::fread(paste("zcat", RCfile))
   # newFormat is the table with all w counts first and then all the c counts
-  newFormat = reshape2::dcast(counts, chrom + start + end ~ cell, value.var = c("w", "c"))
+  newFormat = data.table::dcast(counts, chrom + start + end ~ cell, value.var = c("w", "c"))
   
   # exclude the extra chromosomes
   newFormat <- newFormat[grepl('^chr[0-9XY][0-9]?$', chrom),]
@@ -56,7 +56,7 @@ changeCellTypesFormat = function(stateFile)
   d = data.table::fread(stateFile)
   d = merge(d, d[, .(chrom_start = min(start), chrom_end = max(end)), by = chrom], by = "chrom")
   d = d[start == chrom_start & end == chrom_end,]
-  x = reshape2::dcast(d, chrom + start + end ~ sample + cell, value.var = "class")
+  x = data.table::dcast(d, chrom + start + end ~ sample + cell, value.var = "class")
   
   # exclude the extra chromosomes
   x <- x[grepl('^chr[0-9XY][0-9]?$', chrom),]
